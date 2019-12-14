@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp
+"tmp\startup_stm32f427xx.o"
+"tmp\main.o"
+"tmp\gpio.o"
+"tmp\dma.o"
+"tmp\usart.o"
+"tmp\stm32f4xx_it.o"
+"tmp\stm32f4xx_hal_msp.o"
+"tmp\stm32f4xx_hal_tim.o"
+"tmp\stm32f4xx_hal_tim_ex.o"
+"tmp\stm32f4xx_hal_uart.o"
+"tmp\stm32f4xx_hal_rcc.o"
+"tmp\stm32f4xx_hal_rcc_ex.o"
+"tmp\stm32f4xx_hal_flash.o"
+"tmp\stm32f4xx_hal_flash_ex.o"
+"tmp\stm32f4xx_hal_flash_ramfunc.o"
+"tmp\stm32f4xx_hal_gpio.o"
+"tmp\stm32f4xx_hal_dma_ex.o"
+"tmp\stm32f4xx_hal_dma.o"
+"tmp\stm32f4xx_hal_pwr.o"
+"tmp\stm32f4xx_hal_pwr_ex.o"
+"tmp\stm32f4xx_hal_cortex.o"
+"tmp\stm32f4xx_hal.o"
+"tmp\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "tmp\tmp.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "tmp.map" -o tmp\tmp.axf
