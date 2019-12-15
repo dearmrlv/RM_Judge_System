@@ -1,4 +1,5 @@
 #include "judge.h"
+#include "crc.h"
 
 uint8_t RX_BUF[RX_BUF_LEN];		// 定义数据接收的缓冲区
 frame tmp_frame;	// 拆包得到的frame
@@ -27,9 +28,16 @@ short int unpack(uint8_t *buffer, frame *frame_read)
   head = find_head(buffer);
   if(head < 0)
 		return -1;
+  
+  // 帧头CRC检验
+  if(!Verify_CRC8_Check_Sum((unsigned char *)&buffer[head], 5))
+		return -1;
 	
   // frame_read->header.data_length = (buffer[head + 1]<<8) + buffer[head + 2];
 	frame_read->header.data_length = buffer[head + 1];	// buffer[head + 2]丿般是0x00
+	
+	if(!Verify_CRC16_Check_Sum(&buffer[head], 9 + frame_read->header.data_length))
+		return -1;
 	
 	if(head + buffer[head + 1] >= RX_BUF_LEN){
 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
@@ -49,6 +57,7 @@ short int unpack(uint8_t *buffer, frame *frame_read)
 	//														+ frame_read->data.data[frame_read->data.data_length + 1];
 	frame_read->frame_tail = frame_read->data.data[frame_read->data.data_length] << 8
 															| frame_read->data.data[frame_read->data.data_length + 1];
+	
 	return 0;
 }
 
@@ -94,4 +103,3 @@ short int getJData(frame frame_read, judge_data *JData)
 			return -1;
 	}
 }
-

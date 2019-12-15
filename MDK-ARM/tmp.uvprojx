@@ -427,6 +427,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\judge.c</FilePath>
             </File>
+            <File>
+              <FileName>crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\crc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

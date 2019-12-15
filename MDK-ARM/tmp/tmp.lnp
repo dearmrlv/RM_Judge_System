@@ -7,6 +7,7 @@
 "tmp\stm32f4xx_it.o"
 "tmp\stm32f4xx_hal_msp.o"
 "tmp\judge.o"
+"tmp\crc.o"
 "tmp\stm32f4xx_hal_tim.o"
 "tmp\stm32f4xx_hal_tim_ex.o"
 "tmp\stm32f4xx_hal_uart.o"
