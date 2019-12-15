@@ -46,8 +46,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "string.h"
 #include "judge.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -88,7 +88,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	// getPowerHeat(tmp_frame, &JData.PowerHeat);
 	getJData(tmp_frame, &JData);
   HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_14);
-	memset(RX_BUF, 0, RX_BUF_LEN * sizeof(uint8_t));
+	memset((void *)RX_BUF, 0, RX_BUF_LEN * sizeof(uint8_t));
   HAL_UART_Receive_IT(&huart2, (uint8_t *)RX_BUF, RX_BUF_LEN);
 }
 /* USER CODE END 0 */

@@ -1,5 +1,6 @@
 #include "judge.h"
 #include "crc.h"
+#include "string.h"
 
 uint8_t RX_BUF[RX_BUF_LEN];		// 定义数据接收的缓冲区
 frame tmp_frame;	// 拆包得到的frame
@@ -37,7 +38,10 @@ short int unpack(uint8_t *buffer, frame *frame_read)
 	frame_read->header.data_length = buffer[head + 1];	// buffer[head + 2]丿般是0x00
 	
 	if(!Verify_CRC16_Check_Sum(&buffer[head], 9 + frame_read->header.data_length))
+	{
+		memset((void *)&(frame_read->header.data_length), 0, sizeof(frame_read->header.data_length));
 		return -1;
+	}
 	
 	if(head + buffer[head + 1] >= RX_BUF_LEN){
 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
