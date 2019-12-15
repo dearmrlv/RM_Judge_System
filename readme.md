@@ -2,7 +2,7 @@
 
 ## 工作进展
 * 完成了2019年裁判系统的串口数据读取与信息获取
-* 尚未完成CRC检验
+* 大致完成CRC检验
 
 ## 文件分布
 * 裁判系统读取的代码放在 [./Inc/judge.h](https://github.com/dearmrlv/RM_Judge_System/blob/master/Inc/judge.h) 及 [./Src/judge.c](https://github.com/dearmrlv/RM_Judge_System/blob/master/Src/judge.c) 中
