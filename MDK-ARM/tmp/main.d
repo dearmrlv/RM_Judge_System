@@ -32,3 +32,4 @@ tmp\main.o: ../Inc/dma.h
 tmp\main.o: ../Inc/usart.h
 tmp\main.o: ../Inc/gpio.h
 tmp\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+tmp\main.o: ../Inc/judge.h

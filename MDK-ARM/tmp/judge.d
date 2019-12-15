@@ -1,6 +1,5 @@
-tmp\judge.o: judge.c
-tmp\judge.o: judge.h
-tmp\judge.o: ../Inc/main.h
+tmp\judge.o: ..\Src\judge.c
+tmp\judge.o: ../Inc/judge.h
 tmp\judge.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 tmp\judge.o: ../Inc/stm32f4xx_hal_conf.h
 tmp\judge.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -29,4 +28,3 @@ tmp\judge.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 tmp\judge.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 tmp\judge.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 tmp\judge.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-tmp\judge.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

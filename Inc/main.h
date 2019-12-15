@@ -52,31 +52,12 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "string.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-typedef struct frame_header
-{
-  uint16_t data_length;	// 数据帧中data的长�?
-  uint8_t seq;	// 包序�?
-  uint8_t CRC8;	// 包头CRC8校验
-}frame_header;
 
-typedef struct frame_data
-{
-  uint16_t data_length;	// 数据长度
-  uint8_t * data;	// 指向数据区域的指�?
-}frame_data;
-
-typedef struct frame
-{
-  frame_header header;
-  uint16_t cmd_id;
-  frame_data data;
-  uint16_t frame_tail;
-}frame;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -86,15 +67,15 @@ typedef struct frame
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-#define RX_BUF_LEN 100
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-int find_head(uint8_t *buffer);
-int unpack(uint8_t *buffer, frame * frame_read);
+
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

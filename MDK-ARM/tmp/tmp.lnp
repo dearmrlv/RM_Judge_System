@@ -6,7 +6,6 @@
 "tmp\usart.o"
 "tmp\stm32f4xx_it.o"
 "tmp\stm32f4xx_hal_msp.o"
-"tmp\float.o"
 "tmp\judge.o"
 "tmp\stm32f4xx_hal_tim.o"
 "tmp\stm32f4xx_hal_tim_ex.o"

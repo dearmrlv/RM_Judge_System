@@ -47,6 +47,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "string.h"
+#include "judge.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,9 +69,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-// uint8_t SOF = 0xA5;		// 固定的字符，包开始标�?
-uint8_t RX_BUF[RX_BUF_LEN];		// 定义数据接收的缓冲区
-frame tmp_frame;	// 拆包得到的frame
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -82,59 +81,12 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-/*
-  返回0xA5出现的位�?, 找不到则返回-1
-*/
-int find_head(uint8_t *buffer)
-{
-  // 采用遍历的方�?
-  uint8_t i;
-  for(i = 0; i < RX_BUF_LEN; i++)
-	{
-		if(buffer[i] == 0xA5)
-			break;
-	}
-  return i == RX_BUF_LEN ? -1 : i;
-}
-
-// buffer是缓冲区地址，frame_read是已经建立的帧存放地�?
-int unpack(uint8_t *buffer, frame *frame_read)
-{
-  /*
-  1. 在buffer中找�?0xA5，也就是先找到SOF
-  2. 依次读取各个参数的�?�，赋给frame_read
-  */
-  int head;
-
-  head = find_head(buffer);
-  if(head < 0)
-		return -1;
-	
-  frame_read->header.data_length = (buffer[head + 1]<<8) + buffer[head + 2];
-	
-	if(head + buffer[head + 1] >= RX_BUF_LEN){
-		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
-		return -1;
-	}
-	
-	frame_read->header.seq = buffer[head + 3];
-	frame_read->header.CRC8 = buffer[head + 4];
-	
-	frame_read->cmd_id = (buffer[head + 5]<<8) + buffer[head + 6];
-	
-	frame_read->data.data_length = frame_read->header.data_length;
-	frame_read->data.data = &buffer[head + 7];
-	
-	frame_read->frame_tail = (frame_read->data.data[frame_read->data.data_length] << 8)
-															+ frame_read->data.data[frame_read->data.data_length + 1];
-	
-	return 0;
-}
-
-// RX的中断回调函�?
+// RX的中断回调函数
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	unpack(RX_BUF, &tmp_frame);
+	// getPowerHeat(tmp_frame, &JData.PowerHeat);
+	getJData(tmp_frame, &JData);
   HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_14);
 	memset(RX_BUF, 0, RX_BUF_LEN * sizeof(uint8_t));
   HAL_UART_Receive_IT(&huart2, (uint8_t *)RX_BUF, RX_BUF_LEN);
@@ -183,7 +135,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     // HAL_UART_Transmit_DMA(&huart2, s, 3);
-    HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
