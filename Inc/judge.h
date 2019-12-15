@@ -203,7 +203,7 @@ short int getJData(frame frame_read, judge_data *JData);
 #define BULLET_REMAIN_ID 0x0208
 #define BETWEEN_ROBOTS_ID 0x0301
 
-extern judge_data JData;
+extern judge_data JData;	// 裁判系统发送的所有数据
 extern uint8_t RX_BUF[RX_BUF_LEN];		// 定义数据接收的缓冲区
 extern frame tmp_frame;	// 拆包得到的frame
 
