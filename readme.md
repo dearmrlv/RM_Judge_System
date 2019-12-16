@@ -33,3 +33,4 @@ frame tmp_frame;	// 拆包得到的frame
    * 虽然还是不太明白原理😭……好像跟计网书上讲的过程不太一样？？
    * 使用了[协议手册](https://github.com/RoboMaster/referee_serial_port_protocol/blob/master/doc/cn/裁判系统串口协议附录%20V2.0.pdf)后面附的代码
 * 完成整套裁判系统的搭建，包括单片机的处理、Client和Server的搭建
+* ### **单片机向裁判系统发数据，并在客户端上有相应的显示**
