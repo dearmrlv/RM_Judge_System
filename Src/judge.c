@@ -281,46 +281,46 @@ short int getJData(frame frame_read, judge_data *JData)
 			getGameStatus(frame_read, &JData->GameStatus);
 			return 0;
 		case GAME_RESULT_ID:
-			getGameResult(frame_read, &JData->GameStatus);
+			getGameResult(frame_read, &JData->GameResult);
 			return 0;
 		case ROBOT_HP_ID:
-			getRobotHP(frame_read, &JData->GameStatus);
+			getRobotHP(frame_read, &JData->RobotHP);
 			return 0;
 		case EVENT_ID:
-			getEventData(frame_read, &JData->GameStatus);
+			getEventData(frame_read, &JData->EventData);
 			return 0;
 		case SUPPLY_ACTION_ID:
-			getSupplyAction(frame_read, &JData->GameStatus);
+			getSupplyAction(frame_read, &JData->SupplyAction);
 			return 0;	
 		case SUPPLY_BOOKING_ID:
-			getSupplyBullet(frame_read, &JData->GameStatus);
+			getSupplyBullet(frame_read, &JData->SupplyBooking);
 			return 0;
 		case REFER_WARN_ID:
-			getRefereeWarning(frame_read, &JData->GameStatus);
+			getRefereeWarning(frame_read, &JData->ReferWarn);
 			return 0;
 		case ROBOT_STAT_ID:
-			getRobotStatus(frame_read, &JData->GameStatus);
+			getRobotStatus(frame_read, &JData->RobotStatus);
 			return 0;
 		case POWER_HEAT_ID:
 			getPowerHeat(frame_read, &JData->PowerHeat);
 			return 0;
 		case ROBOT_POS_ID:
-			getRobotPot(frame_read, &JData->GameStatus);
+			getRobotPot(frame_read, &JData->RobotPos);
 			return 0;
 		case ROBOT_BUF_ID:
-			getBuff(frame_read, &JData->GameStatus);
+			getBuff(frame_read, &JData->RobotBuff);
 			return 0;
 		case AER_ENERGY_ID:
-			getAerEnergy(frame_read, &JData->GameStatus);
+			getAerEnergy(frame_read, &JData->AerEnergy);
 			return 0;
 		case ROBOT_HURT_ID:
-			getRobotHurt(frame_read, &JData->GameStatus);
+			getRobotHurt(frame_read, &JData->RobotHurt);
 			return 0;
 		case SHOOT_DATA_ID:
-			getShoot(frame_read, &JData->GameStatus);
+			getShoot(frame_read, &JData->ShootData);
 			return 0;
 		case BULLET_REMAIN_ID:
-			getBulletrem(frame_read, &JData->GameStatus);
+			getBulletrem(frame_read, &JData->BulletRemain);
 			return 0;
 		default:
 			return -1;
