@@ -178,11 +178,26 @@ typedef __packed struct
 	ext_bullet_remaining_t BulletRemain;
 }judge_data;
 
+float Change_to_flt(uint32_t x);
 short int find_head(uint8_t *buffer);
 short int unpack(uint8_t *buffer, frame *frame_read);
-short int getPowerHeat(frame frame_read, ext_power_heat_data_t *PowerHeat);
-short int getSupplyAction(frame frame_read, ext_supply_projectile_action_t *SupplyAction);
+short int getGameStatus(frame frame_read, ext_game_status_t *GameState);		//比赛状态
+short int getGameResult(frame frame_read, ext_game_result_t *GameResult); //比赛结果
+short int getRobotHP(frame frame_read, ext_game_robot_HP_t *RobotHP);			//机器人血量
+short int getEventData(frame frame_read, ext_event_data_t *EventData);		//场地时间数据
+short int getSupplyAction(frame frame_read, ext_supply_projectile_action_t *SupplyAction);		//补给站数据
+short int getSupplyBullet(frame frame_read, ext_supply_projectile_booking_t *SupplyBullet);		//获取补给子弹的信息
+short int getRefereeWarning(frame frame_read, ext_referee_warning_t *RefereeWarning);					//获取裁判警告信息
+short int getRobotStatus(frame frame_read, ext_game_robot_status_t *RobotStatus);  						//获取比赛机器人数据
+short int getPowerHeat(frame frame_read, ext_power_heat_data_t *PowerHeat);		//实时功率数据
+short int getRobotPot(frame frame_read, ext_game_robot_pos_t *RobotPot);
+short int getBuff(frame frame_read, ext_buff_t *Buff);
+short int getAerEnergy(frame frame_read,  aerial_robot_energy_t *RobotEnergy);
+short int getRobotHurt(frame frame_read,  ext_robot_hurt_t *RobotHurt);
+short int getShoot(frame frame_read,  ext_shoot_data_t *Shootdata);
+short int getBulletrem(frame frame_read, ext_bullet_remaining_t *Bulletrem);
 short int getJData(frame frame_read, judge_data *JData);
+
 
 #define RX_BUF_LEN 150
 
