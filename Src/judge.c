@@ -195,7 +195,7 @@ short int getRobotStatus(frame frame_read, ext_game_robot_status_t *RobotStatus)
 short int getPowerHeat(frame frame_read, ext_power_heat_data_t *PowerHeat)
 {
 	uint8_t *data = frame_read.data.data;
-	if(frame_read.data.data_length != 14)
+	if(frame_read.data.data_length != 0x800)
 		return -1;
 	PowerHeat->chassis_volt = data[0]<<8 | data[1];
 	PowerHeat->chassis_current = (data[2]<<8) + data[3];
